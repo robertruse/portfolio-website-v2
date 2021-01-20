@@ -251,9 +251,9 @@
   border-radius: 1px;
   background: var(--clr-white);
 
-  -webkit-transition: -webkit-transform, background-color,
+  -webkit-transition: background-color, -webkit-transform,
     500ms var(--anim-ease-out-back);
-  transition: transform, background-color, 500ms var(--anim-ease-out-back);
+  transition: background-color, transform, 500ms var(--anim-ease-out-back);
 }
 
 .hamburger-icon::before,
