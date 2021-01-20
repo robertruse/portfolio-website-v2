@@ -577,8 +577,8 @@ header .wrapper-fixed {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
 
-    -webkit-transition: -webkit-transform 600ms var(--anim-ease-out-back);
-    transition: transform 600ms var(--anim-ease-out-back);
+    -webkit-transition: -webkit-transform 500ms var(--anim-ease-out-back);
+    transition: transform 500ms var(--anim-ease-out-back);
   }
 
   nav.show {
