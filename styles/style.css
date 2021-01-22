@@ -797,35 +797,22 @@ header .wrapper-fixed {
     width: 100%;
   }
 
-  /* @supports (-webkit-clip-path: circle()) or (clip-path: circle()) {
-    nav {
-      -webkit-clip-path: circle(0px at top right);
-      clip-path: circle(0px at top right);
-
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-
-      -webkit-transition: -webkit-clip-path 600ms ease-out;
-      transition: clip-path 600ms ease-out;
-    }
-
-    nav.show {
-      -webkit-clip-path: circle(150% at top right);
-      clip-path: circle(150% at top right);
-    }
-
-    nav::after {
-      display: none;
-    }
-  } */
-
   /* Showcase */
+  .showcase h1 {
+    width: 100%;
+    text-align: center;
+  }
+
   .showcase-bg-lg {
     display: none;
   }
 
   .showcase-bg-sm {
     display: block;
+  }
+
+  .showcase .btn {
+    width: 100%;
   }
 
   /* Skills */
