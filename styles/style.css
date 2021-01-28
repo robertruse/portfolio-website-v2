@@ -26,7 +26,8 @@
 }
 
 html {
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
+  overflow-anchor: none;
 }
 
 body {
