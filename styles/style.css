@@ -949,6 +949,10 @@ header .wrapper-fixed {
   .contact ul {
     grid-row: 1;
   }
+
+  .contact li {
+    padding: 8px 0;
+  }
 }
 
 @media (max-width: 350px) {
