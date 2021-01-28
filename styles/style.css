@@ -308,6 +308,7 @@ header .wrapper-fixed {
   grid-column: 2;
   grid-row: 1;
   position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
 }
@@ -328,21 +329,6 @@ header .wrapper-fixed {
 .work .project:nth-of-type(even) .container-text {
   grid-column: 2;
   margin-left: auto;
-}
-
-.work .project-image-lg {
-  position: relative;
-  z-index: 2;
-}
-
-.work .project-image-sm {
-  width: 22%;
-  position: absolute;
-  left: 0%;
-  top: 50%;
-  z-index: 3;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .work p {
