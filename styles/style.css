@@ -530,7 +530,7 @@ header .wrapper-fixed {
 
 .footer {
   height: 51px;
-  background: var(--clr-black);
+  background: var(--clr-primary);
 }
 
 .footer .container {
@@ -539,7 +539,7 @@ header .wrapper-fixed {
 
 .footer span {
   font-size: 0.9rem;
-  color: var(--clr-gray);
+  color: var(--clr-black);
 }
 
 /* Media queries */
