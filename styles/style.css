@@ -989,3 +989,10 @@ header .wrapper-fixed {
     padding: 24px;
   }
 }
+
+@media (min-width: 1440px) {
+  .showcase {
+    min-height: auto;
+    padding: 164px;
+  }
+}
