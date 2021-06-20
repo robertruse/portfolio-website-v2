@@ -644,6 +644,15 @@ header .wrapper-fixed {
     margin: 0 auto;
   }
 
+  .showcase-bg-lg {
+    display: none;
+  }
+
+  .showcase-bg-sm {
+    display: block;
+  }
+
+
   /* Skills */
 
   .skills .container-cards {
@@ -791,14 +800,6 @@ header .wrapper-fixed {
   .showcase h1 {
     width: 100%;
     text-align: center;
-  }
-
-  .showcase-bg-lg {
-    display: none;
-  }
-
-  .showcase-bg-sm {
-    display: block;
   }
 
   .showcase .btn {
