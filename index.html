@@ -1,417 +1,576 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Robert Ruse</title>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Robert Ruse</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+        <link rel="shortcut icon" href="images/favicon.ico" />
 
-    <link rel="shortcut icon" href="images/favicon.ico" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
+        <!-- Alpine.js -->
+        <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 
-    <link rel="stylesheet" href="styles/utilities.css" />
-    <link rel="stylesheet" href="styles/style.css" />
+        <!-- Tailwind -->
+        <link href="/styles/output.css" rel="stylesheet" />
+    </head>
 
-    <script src="scripts/script.js" defer></script>
-  </head>
-  <body>
-    <header class="header" id="header">
-      <div class="container flex">
-        <div class="logo">
-          <img src="images/logo-1.svg" alt="" />
-        </div>
-        <nav>
-          <ul class="nav-list">
-            <li>
-              <a href="#showcase" class="nav-link"><span>Home</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#skills" class="nav-link"><span>Skills</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#work" class="nav-link"><span>Work</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#contact" class="nav-link"><span>Contact</span></a>
-            </li>
-            <li>
-              <a
-                href="images/robertruse-resume.pdf"
-                target="_blank"
-                class="btn btn-secondary"
-                >Résumé</a
-              >
-            </li>
-          </ul>
-        </nav>
-        <div class="btn-toggle btn-float">
-          <span class="hamburger-icon"></span>
-        </div>
-        <div class="wrapper-fixed">
-          <a href="#showcase" class="btn-back btn-float"
-            ><i class="fas fa-arrow-up"></i
-          ></a>
-        </div>
-      </div>
-    </header>
-
-    <section class="showcase flex" id="showcase">
-      <div class="container grid">
-        <div class="showcase-text">
-          <h1>Hi I'm Robert.</h1>
-          <p class="lead">
-            I'm a software developer passionate about front end development,
-            design and everything in between. I consider work an ongoing
-            education and I'm always looking for opportunities to work with
-            those who are willing to share their knowledge as much as I want to
-            learn.
-          </p>
-          <a href="#footer" class="btn btn-lg"
-            >Get in Touch<i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-        <img src="images/bg-1.svg" alt="" class="showcase-bg-lg" />
-        <img src="images/bg-2.svg" alt="" class="showcase-bg-sm" />
-      </div>
-    </section>
-
-    <section class="skills" id="skills">
-      <div class="container flex">
-        <h2>Skills</h2>
-        <div class="container-cards grid grid-3">
-          <div class="card">
-            <img src="images/icon-languages.svg" alt="" />
-            <div class="container-text">
-              <h3>Languages</h3>
-              <ul>
-                <li>JavaScript</li>
-                <li>PHP</li>
-                <li>MySQL</li>
-                <li>HTML5</li>
-                <li>CSS3</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="images/icon-tools.svg" alt="" />
-            <div class="container-text">
-              <h3>Frameworks</h3>
-              <ul>
-                <li>React.js</li>
-                <li>JQuery.js</li>
-                <li>Bootstrap</li>
-                <li>Tailwind</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="images/icon-design.svg" alt="" />
-            <div class="container-text">
-              <h3>Design</h3>
-              <ul>
-                <li>Figma</li>
-                <li>Photoshop</li>
-                <li>Illustrator</li>
-                <li>3DS Max</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="work" id="work">
-      <div class="container flex">
-        <h2>Some Things I’ve Built</h2>
-        <div class="container-projects">
-          <article class="project grid">
-            <div class="container-images">
-              <img src="images/mockup-ttt.png" alt="" class="project-image" />
-            </div>
-
-            <div class="container-text">
-              <h3>Tic Tac Toe</h3>
-              <p>
-                Play against an unbeatable AI or another player in a classic
-                game of X's and O's. The app was built with vanilla JavaScript
-                using a minimax recursion algorithm for the computer AI.
-              </p>
-              <div class="container-buttons">
+    <body>
+        <!-- Navbar -->
+        <header
+            x-data="{ 
+                atTop: true,
+                list: [
+                    {
+                        name: 'Skills',
+                        href: '#skills',
+                    },
+                    {
+                        name: 'Work',
+                        href: '#work',
+                    },
+                    {
+                        name: 'Contact',
+                        href: '#contact',
+                    },
+                ],
+                handleScroll() {
+                    this.atTop = window.pageYOffset > 20 ? false : true
+                },
+            }"
+            role="banner"
+            aria-label="Page header"
+            class="fixed inset-x-0 top-0 z-30 border-b border-transparent bg-white filter-none transition-all duration-500"
+            :class="atTop || '!drop-shadow-xl border-gray-200'"
+            @scroll.window="handleScroll"
+        >
+            <div class="mx-auto flex min-h-[64px] max-w-7xl items-center justify-between px-7 sm:px-10">
+                <!-- Logo -->
                 <a
-                  href="https://robertruse.github.io/tic-tac-toe-v2/"
-                  target="_blank"
-                  class="btn"
-                  >Live Demo</a
+                    href="#hero"
+                    aria-current="page"
+                    class="flex flex-none rounded-lg bg-transparent p-3 outline-none transition-all hover:bg-geyser-50 focus:ring focus:ring-geyser-100"
                 >
-                <a
-                  href="https://github.com/robertruse/tic-tac-toe-v2"
-                  target="_blank"
-                  class="btn btn-secondary"
-                  >GitHub</a
+                    <img src="images/logo-1.svg" alt="Robert Ruse logo" width="24" height="24" />
+                </a>
+
+                <!-- Menu -->
+                <nav role="navigation" aria-label="Main menu">
+                    <ul class="hidden items-center space-x-2 sm:flex">
+                        <template x-for="(item, index) in list" :key="index">
+                            <li>
+                                <a
+                                    x-text="item.name"
+                                    :href="item.href"
+                                    class="flex items-center justify-center rounded-lg bg-transparent py-2.5 px-[30px] font-medium outline-none transition-all hover:bg-geyser-50 focus:ring focus:ring-geyser-100"
+                                ></a>
+                            </li>
+                        </template>
+
+                        <li>
+                            <a
+                                href="images/robertruse-resume.pdf"
+                                target="_blank"
+                                class="group flex items-center justify-center rounded-lg bg-transparent bg-geyser-100 py-2.5 px-[30px] pl-7 font-medium outline-none transition-all hover:bg-geyser-200 focus:ring focus:ring-geyser-200"
+                            >
+                                <img
+                                    src="images/heroicons/outline/document-text.svg"
+                                    alt=""
+                                    width="24"
+                                    height="24"
+                                    class="mr-2 h-6 w-auto [filter:brightness(0)_saturate(100%)_invert(59%)_sepia(8%)_saturate(1003%)_hue-rotate(133deg)_brightness(91%)_contrast(83%);] group-hover:![filter:brightness(0)_saturate(100%)_invert(41%)_sepia(19%)_saturate(557%)_hue-rotate(133deg)_brightness(100%)_contrast(86%);]"
+                                />
+
+                                <span>Résumé</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Menu - mobile -->
+                <div
+                    x-id="['dropdown-panel']"
+                    x-data="{
+                       open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+            
+                            this.$refs.button.focus()
+            
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+            
+                            this.open = false
+            
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                    x-on:keydown.escape.prevent.stop="close($refs.button)"
+                    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                    class="sm:hidden"
                 >
-              </div>
-            </div>
-          </article>
+                    <!-- Button -->
+                    <button
+                        x-ref="button"
+                        type="button"
+                        :aria-expanded="open"
+                        :aria-controls="$id('dropdown-panel')"
+                        class="flex rounded-lg bg-transparent p-2 outline-none transition-all hover:bg-geyser-50 focus:ring focus:ring-geyser-100"
+                        @click="toggle"
+                    >
+                        <img
+                            src="images/heroicons/outline/menu.svg"
+                            :src="open ? 'images/heroicons/outline/x.svg' : 'images/heroicons/outline/menu.svg'"
+                            alt="Mobile menu icon"
+                            width="32"
+                            height="32"
+                            class="h-8 w-auto"
+                        />
+                    </button>
 
-          <article class="project grid">
-            <div class="container-images">
-              <img
-                src="images/mockup-calculator.png"
-                alt=""
-                class="project-image"
-              />
-            </div>
+                    <!-- Panel -->
+                    <div
+                        :id="$id('dropdown-panel')"
+                        x-ref="panel"
+                        x-show="open"
+                        x-cloak
+                        x-transition.origin.top.right
+                        class="absolute inset-x-0 mx-5 mt-4 overflow-y-auto rounded-xl border border-gray-200 bg-white px-5 py-2.5 !drop-shadow-2xl"
+                        @click.outside="close($refs.button)"
+                    >
+                        <ul>
+                            <template x-for="(item, index) in list" :key="index">
+                                <li class="py-2.5" :class="index < list.length - 1 && 'border-b bordet-gray-200'">
+                                    <a
+                                        x-text="item.name"
+                                        :href="item.href"
+                                        class="flex items-center justify-center rounded-lg bg-transparent py-3 px-9 text-lg font-medium outline-none transition-all hover:bg-geyser-50 focus:ring focus:ring-geyser-100"
+                                        @click="close()"
+                                    ></a>
+                                </li>
+                            </template>
 
-            <div class="container-text">
-              <h3>Calculator</h3>
-              <p>
-                A minimally designed calculator utilizing object-oriented
-                programming concepts. I used HTML5, CSS3, and modern JavaScript
-                syntax for the app's internal workings.
-              </p>
-              <div class="container-buttons">
-                <a
-                  href="https://robertruse.github.io/calculator/"
-                  target="_blank"
-                  class="btn"
-                  >Live Demo</a
-                >
-                <a
-                  href="https://github.com/robertruse/calculator"
-                  target="_blank"
-                  class="btn btn-secondary"
-                  >GitHub</a
-                >
-              </div>
-            </div>
-          </article>
+                            <li>
+                                <a
+                                    href="images/robertruse-resume.pdf"
+                                    target="_blank"
+                                    class="group flex items-center justify-center rounded-lg bg-transparent bg-geyser-100 py-3 px-9 text-lg font-medium outline-none transition-all hover:bg-geyser-200 focus:ring focus:ring-geyser-200"
+                                    @click="close()"
+                                >
+                                    <img
+                                        src="images/heroicons/outline/document-text.svg"
+                                        alt=""
+                                        width="24"
+                                        height="24"
+                                        class="mr-2 h-7 w-auto [filter:brightness(0)_saturate(100%)_invert(59%)_sepia(8%)_saturate(1003%)_hue-rotate(133deg)_brightness(91%)_contrast(83%);] group-hover:![filter:brightness(0)_saturate(100%)_invert(41%)_sepia(19%)_saturate(557%)_hue-rotate(133deg)_brightness(100%)_contrast(86%);]"
+                                    />
 
-          <article class="project grid">
-            <div class="container-images">
-              <img src="images/mockup-rps.png" alt="" class="project-image" />
+                                    <span>Résumé</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="container-text">
-              <h3>Rock Paper Scissors</h3>
-              <p>
-                A retro reinterpretation of the classic game of chance Rock
-                Paper Scissors. I used HTML5, CSS3, and JavaScript for the DOM
-                manipulation and game rules.
-              </p>
-              <div class="container-buttons">
-                <a
-                  href="https://robertruse.github.io/rock-paper-scissors/"
-                  target="_blank"
-                  class="btn"
-                  >Live Demo</a
-                >
-                <a
-                  href="https://github.com/robertruse/rock-paper-scissors"
-                  target="_blank"
-                  class="btn btn-secondary"
-                  >GitHub</a
-                >
-              </div>
-            </div>
-          </article>
+        </header>
 
-          <article class="project grid">
-            <div class="container-images">
-              <img
-                src="images/mockup-google.png"
-                alt=""
-                class="project-image"
-              />
-            </div>
-            <div class="container-text">
-              <h3>Google Homepage</h3>
-              <p>
-                A UI project where I designed and built my version of the Google
-                homepage. I used HTML5, CSS3, and a bit of JavaScript for the
-                Dark Mode theme and menu.
-              </p>
-              <div class="container-buttons">
-                <a
-                  href="https://robertruse.github.io/google-neumorphism/"
-                  target="_blank"
-                  class="btn"
-                  >Live Demo</a
-                >
-                <a
-                  href="https://github.com/robertruse/google-neumorphism"
-                  target="_blank"
-                  class="btn btn-secondary"
-                  >GitHub</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+        <!-- Hero -->
+        <section id="hero">
+            <div class="sm2:py-24 mx-auto max-w-2xl px-10 py-20 xl:max-w-7xl xl:py-32">
+                <div class="mt-6 grid grid-cols-1 gap-14 sm:mt-8 sm:gap-16 xl:grid-cols-2 xl:gap-24">
+                    <div class="flex flex-1 justify-end">
+                        <img
+                            src="images/bg-1.svg"
+                            alt=""
+                            width="300"
+                            height="300"
+                            class="hidden h-auto w-full max-w-lg xl:block"
+                        />
 
-    <section class="other-work" id="other-work">
-      <div class="container flex">
-        <h2>Other Noteworthy Projects</h2>
-        <div class="container-projects grid grid-3">
-          <article class="project card">
-            <h3>Netflix Homepage</h3>
-            <p>
-              A clone of the Netflix landing page using HTML, CSS, and a bit of
-              JavaScript for the FAQ menu. I used modern CSS3+ techniques like
-              Grid, Flex, overlays, and shadows.
-            </p>
-            <div class="container-buttons">
-              <a
-                href="https://robertruse.github.io/netflix-homepage/"
-                target="_blank"
-                class="btn"
-                >Live Demo</a
-              >
-              <a
-                href="https://github.com/robertruse/netflix-homepage"
-                target="_blank"
-                class="btn btn-secondary"
-                >GitHub</a
-              >
+                        <img src="images/bg-2.svg" alt="" width="300" height="225" class="h-auto w-full xl:hidden" />
+                    </div>
+
+                    <div
+                        class="flex flex-col items-center justify-center gap-10 text-center xl:col-start-1 xl:row-start-1 xl:items-start xl:text-start"
+                    >
+                        <hr class="w-14 border-t-[6px] border-geyser-100" />
+
+                        <h1 class="text-5xl font-bold sm:text-6xl">Hi, I'm Robert</h1>
+
+                        <p class="mb-2 max-w-xl text-lg">
+                            I'm a software developer passionate about web development, design and everything in between.
+                            I consider work an ongoing education and I'm always looking for opportunities to work with
+                            those who are willing to share their knowledge as much as I want to learn.
+                        </p>
+
+                        <a
+                            href="#contact"
+                            class="group flex w-full items-center justify-center rounded-lg bg-energy-yellow-300 py-3 px-9 pr-[34px] text-left text-lg font-medium outline-none transition-all hover:bg-energy-yellow-400 focus:ring focus:ring-energy-yellow-400 sm:w-auto"
+                        >
+                            <span class="mr-2">Get in touch</span>
+
+                            <img
+                                src="images/heroicons/outline/arrow-narrow-right.svg"
+                                alt=""
+                                width="24"
+                                height="24"
+                                class="h-7 w-auto [filter:brightness(0)_saturate(100%)_invert(50%)_sepia(100%)_saturate(791%)_hue-rotate(12deg)_brightness(91%)_contrast(90%);] group-hover:![filter:brightness(0)_saturate(100%)_invert(30%)_sepia(96%)_saturate(1193%)_hue-rotate(24deg)_brightness(97%)_contrast(89%);]"
+                            />
+                        </a>
+                    </div>
+                </div>
             </div>
-          </article>
+        </section>
 
-          <article class="project card">
-            <h3>Pluralsight Login</h3>
-            <p>
-              In this project, I created a clone of the Pluralsight login page
-              with HTML5 and CSS3, including Flexbox and media queries for
-              responsiveness.
-            </p>
-            <div class="container-buttons">
-              <a
-                href="https://robertruse.github.io/pluralsight-login/"
-                target="_blank"
-                class="btn"
-                >Live Demo</a
-              >
-              <a
-                href="https://github.com/robertruse/pluralsight-login"
-                target="_blank"
-                class="btn btn-secondary"
-                >GitHub</a
-              >
+        <!-- Skills -->
+        <section
+            id="skills"
+            x-data="{
+                cards: [
+                    {
+                        name: 'Technologies',
+                        icon: 'images/icon-languages.svg',
+                        list: [
+                            'JavaScript',
+                            'PHP',
+                            'MySQL',
+                            'HTML5',
+                            'CSS3',
+                        ]
+                    },
+                    {
+                        name: 'Frameworks',
+                        icon: 'images/icon-tools.svg',
+                        list: [
+                            'Vue.js',
+                            'Alpine.js',
+                            'Tailwind CSS',
+                            'Bootstrap',
+                        ]
+                    },
+                    {
+                        name: 'Design',
+                        icon: 'images/icon-design.svg',
+                        list: [
+                            'Figma',
+                            'Photoshop',
+                            'Illustrator',
+                            '3DS Max',
+                        ]
+                    },
+                ],
+            }"
+            class="bg-geyser-50"
+        >
+            <div class="mx-auto max-w-2xl px-10 py-20 xl:max-w-7xl xl:py-32">
+                <hr class="mx-auto mb-10 w-14 border-t-[6px] border-geyser-200/70" />
+
+                <h2 class="mb-20 text-center text-4xl font-bold sm:text-5xl">Skills</h2>
+
+                <div class="grid grid-cols-1 gap-12 sm:gap-14 xl:grid-cols-3 xl:gap-16">
+                    <template x-for="(card, index) in cards" :key="index">
+                        <div
+                            class="flex flex-col gap-6 rounded-xl border border-gray-200 bg-white p-10 drop-shadow-xl sm:flex-row sm:gap-12 xl:flex-col xl:gap-6"
+                        >
+                            <img :src="card.icon" alt="" width="200" height="200" class="mx-auto h-32 w-auto sm:mx-0" />
+
+                            <div
+                                class="flex flex-col items-center gap-7 sm:items-start sm:border-l sm:border-gray-200 sm:pl-11 xl:items-center xl:border-none xl:pl-0"
+                            >
+                                <h3 x-text="card.name" class="break-all text-3xl font-bold sm:text-4xl"></h3>
+
+                                <hr class="min-w-full sm:hidden xl:block" />
+
+                                <ul class="">
+                                    <template x-for="(item, index) in card.list" :key="index">
+                                        <li class="flex items-center text-lg">
+                                            <img
+                                                src="images/fontawesome/circle-solid.svg"
+                                                alt=""
+                                                width="448"
+                                                height="512"
+                                                class="mr-4 h-2 w-auto [filter:brightness(0)_saturate(100%)_invert(94%)_sepia(14%)_saturate(218%)_hue-rotate(127deg)_brightness(87%)_contrast(91%);]"
+                                            />
+
+                                            <span x-text="item"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </template>
+                </div>
             </div>
-          </article>
+        </section>
 
-          <article class="project card">
-            <h3>Twitter Homepage</h3>
-            <p>
-              A simple recreation of another popular website's login page. The
-              Twitter homepage was created to sharpen my HTML5 and CSS3 skills.
-            </p>
-            <div class="container-buttons">
-              <a
-                href="https://robertruse.github.io/twitter-homepage/"
-                target="_blank"
-                class="btn"
-                >Live Demo</a
-              >
-              <a
-                href="https://github.com/robertruse/twitter-homepage"
-                target="_blank"
-                class="btn btn-secondary"
-                >GitHub</a
-              >
+        <!-- Work -->
+        <section
+            id="work"
+            x-data="{
+                projects: [
+                    {
+                        name: 'Tic Tac Toe',
+                        description: 'Play against an unbeatable AI or another player in a classic X and O game. The app was built with vanilla JavaScript using a minimax recursion algorithm for the computer AI.',
+                        mockup: 'images/mockup-ttt.png',
+                        demo: 'https://robertruse.github.io/tic-tac-toe-v2/',
+                        code: 'https://github.com/robertruse/tic-tac-toe-v2',
+                    },
+                    {
+                        name: 'Calculator',
+                        description: 'A minimally designed calculator utilizing object-oriented programming concepts. I used HTML5, CSS3, and modern JavaScript syntax for the app\'s internal workings.',
+                        mockup: 'images/mockup-calculator.png',
+                        demo: 'https://robertruse.github.io/calculator/',
+                        code: 'https://github.com/robertruse/calculator',
+                    },
+                    {
+                        name: 'Rock Paper Scissors',
+                        description: 'A retro reinterpretation of the classic game of chance Rock Paper Scissors. I used HTML5, CSS3, and JavaScript for the DOM manipulation and game rules.',
+                        mockup: 'images/mockup-rps.png',
+                        demo: 'https://robertruse.github.io/rock-paper-scissors/',
+                        code: 'https://github.com/robertruse/rock-paper-scissors',
+                    },
+                    {
+                        name: 'Google Homepage',
+                        description: 'A UI project where I designed and built my version of the Google homepage. I used HTML5, CSS3, and a bit of JavaScript for the Dark Mode theme and menu.',
+                        mockup: 'images/mockup-google.png',
+                        demo: 'https://robertruse.github.io/google-neumorphism/',
+                        code: 'https://github.com/robertruse/google-neumorphism',
+                    },
+                ],
+            }"
+        >
+            <div class="mx-auto max-w-2xl px-10 py-20 xl:max-w-7xl xl:py-32">
+                <hr class="mx-auto mb-10 w-14 border-t-[6px] border-geyser-100" />
+
+                <h2 class="mb-20 text-center text-4xl font-bold sm:text-5xl">Some Things I’ve Built</h2>
+
+                <div class="flex flex-col gap-10 sm:gap-20">
+                    <template x-for="(project, index) in projects" :key="index">
+                        <article
+                            class="grid grid-cols-1 gap-10 py-10 sm:gap-12 xl:grid-cols-2"
+                            :class="index % 2 !== 0 && 'justify-items-end'"
+                        >
+                            <div :class="index % 2 === 0 && 'xl:col-start-2 xl:row-start-1'">
+                                <img :src="project.mockup" alt="" />
+                            </div>
+
+                            <div
+                                class="flex flex-col items-center justify-center gap-7 text-center xl:items-start xl:text-start"
+                                :class="index % 2 === 0 && 'xl:col-start-1 xl:row-start-1'"
+                            >
+                                <h3 x-text="project.name" class="text-3xl font-bold sm:text-4xl"></h3>
+
+                                <p x-text="project.description" class="mb-3 sm:max-w-lg xl:max-w-md">
+                                    Play against an unbeatable AI or another player in a classic game of X's and O's.
+                                    The app was built with vanilla JavaScript using a minimax recursion algorithm for
+                                    the computer AI.
+                                </p>
+
+                                <div class="flex gap-2.5">
+                                    <a
+                                        :href="project.demo"
+                                        target="_blank"
+                                        class="group flex items-center justify-center rounded-lg bg-energy-yellow-300 py-2.5 px-[30px] pl-7 font-medium outline-none transition-all hover:bg-energy-yellow-400 focus:ring focus:ring-energy-yellow-400 sm:w-auto"
+                                    >
+                                        <img
+                                            src="images/heroicons/outline/play.svg"
+                                            alt=""
+                                            width="24"
+                                            height="24"
+                                            class="mr-2 h-6 w-auto [filter:brightness(0)_saturate(100%)_invert(50%)_sepia(100%)_saturate(791%)_hue-rotate(12deg)_brightness(91%)_contrast(90%);] group-hover:![filter:brightness(0)_saturate(100%)_invert(30%)_sepia(96%)_saturate(1193%)_hue-rotate(24deg)_brightness(97%)_contrast(89%);] sm:block"
+                                        />
+
+                                        <span>Demo</span>
+                                    </a>
+
+                                    <a
+                                        :href="project.code"
+                                        target="_blank"
+                                        class="group flex items-center justify-center rounded-lg bg-transparent bg-geyser-100 py-2.5 px-[30px] pl-7 font-medium outline-none transition-all hover:bg-geyser-200 focus:ring focus:ring-geyser-200"
+                                    >
+                                        <img
+                                            src="images/heroicons/outline/terminal.svg"
+                                            alt=""
+                                            width="24"
+                                            height="24"
+                                            class="mr-2 h-6 w-auto [filter:brightness(0)_saturate(100%)_invert(59%)_sepia(8%)_saturate(1003%)_hue-rotate(133deg)_brightness(91%)_contrast(83%);] group-hover:![filter:brightness(0)_saturate(100%)_invert(41%)_sepia(19%)_saturate(557%)_hue-rotate(133deg)_brightness(100%)_contrast(86%);]"
+                                        />
+
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </template>
+                </div>
             </div>
-          </article>
+        </section>
 
-          <article class="project card">
-            <h3>Google Homepage</h3>
-            <p>
-              My first attempt at recreating a popular website. The aim of the
-              project was to learn HTML5, CSS3, and Git/GitHub.
-            </p>
-            <div class="container-buttons">
-              <a
-                href="https://robertruse.github.io/google-homepage/"
-                target="_blank"
-                class="btn"
-                >Live Demo</a
-              >
-              <a
-                href="https://github.com/robertruse/google-homepage"
-                target="_blank"
-                class="btn btn-secondary"
-                >GitHub</a
-              >
+        <!-- Contact -->
+        <section id="contact" class="bg-geyser-50">
+            <div class="mx-auto max-w-2xl px-10 py-20 xl:max-w-7xl xl:py-32">
+                <div class="grid grid-cols-1 gap-20 xl:grid xl:grid-cols-2 xl:gap-20">
+                    <!-- Contact - social media -->
+                    <div
+                        class="flex flex-col items-center justify-center gap-8 text-center xl:items-start xl:text-left"
+                    >
+                        <hr class="mb-2 w-14 border-t-[6px] border-geyser-200/70" />
+
+                        <div class="mb-1">
+                            <h2 class="mb-10 text-4xl font-bold sm:text-5xl">Get In Touch</h2>
+
+                            <p class="text-lg">Have a project in mind or just want to say hi?</p>
+                            <p class="text-lg">Feel free to send me a message!</p>
+                        </div>
+
+                        <hr class="w-[360px] max-w-full border-geyser-100 xl:hidden" />
+
+                        <ul
+                            x-data="{
+                                list: [
+                                    {
+                                        name: 'linkedin.com/in/robertruse',
+                                        url: 'https://www.linkedin.com/in/robertruse/',
+                                        icon: 'images/fontawesome/linkedin-in-brands.svg',
+                                    },
+                                    {
+                                        name: 'github.com/robertruse',
+                                        url: 'https://github.com/robertruse',
+                                        icon: 'images/fontawesome/github-brands.svg',
+                                    },
+                                    {
+                                        name: 'twitter.com/rbrtrs',
+                                        url: 'https://twitter.com/rbrtrs',
+                                        icon: 'images/fontawesome/twitter-brands.svg',
+                                    },
+                                ],
+                            }"
+                            class="space-y-3"
+                        >
+                            <template x-for="(item, index) in list" :key="index">
+                                <li class="flex items-start">
+                                    <img
+                                        :src="item.icon"
+                                        alt="Social media icon"
+                                        target="_blank"
+                                        width="448"
+                                        height="512"
+                                        class="mr-2.5 h-6 w-auto [filter:brightness(0)_saturate(100%)_invert(87%)_sepia(23%)_saturate(127%)_hue-rotate(128deg)_brightness(92%)_contrast(89%);]"
+                                    />
+
+                                    <a
+                                        x-text="item.name"
+                                        :href="item.url"
+                                        class="mt-0.5 break-all rounded-sm px-1 text-left underline outline-none transition-all hover:text-geyser-500 hover:underline focus:underline focus:ring focus:ring-geyser-200"
+                                    ></a>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+
+                    <!-- Contact - form -->
+                    <div
+                        class="flex flex-col gap-7 rounded-xl border border-gray-200 bg-white p-10 drop-shadow-xl xl:flex-col"
+                    >
+                        <h3 class="text-3xl font-bold sm:text-4xl">Contact me</h3>
+
+                        <form
+                            action="https://app.headlessforms.cloud/api/v1/form-submission/VZFlKsMVSm"
+                            method="POST"
+                            class="flex flex-1 flex-col gap-8"
+                            @submit.prevent
+                        >
+                            <label>
+                                <span>Name</span>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Full name"
+                                    required
+                                    class="mt-1 block w-full rounded-md border-gray-300 p-2.5 transition-all focus:border-geyser-300 focus:ring focus:ring-geyser-200 focus:ring-opacity-50"
+                                />
+                            </label>
+
+                            <label>
+                                <span>Email</span>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="you@mail.com"
+                                    class="mt-1 block w-full rounded-md border-gray-300 p-2.5 transition-all focus:border-geyser-300 focus:ring focus:ring-geyser-200 focus:ring-opacity-50"
+                                />
+                            </label>
+
+                            <label>
+                                <span>Message</span>
+                                <textarea
+                                    rows="4"
+                                    name="message"
+                                    placeholder="Hi,"
+                                    required
+                                    class="mt-1 block w-full rounded-md border-gray-300 p-2.5 transition-all focus:border-geyser-300 focus:ring focus:ring-geyser-200 focus:ring-opacity-50"
+                                ></textarea>
+                            </label>
+
+                            <div class="mt-4">
+                                <button
+                                    type="submit"
+                                    class="align-self-start group flex w-full items-center justify-center rounded-lg bg-energy-yellow-300 py-2.5 px-[30px] pr-7 text-left font-medium outline-none transition-all hover:bg-energy-yellow-400 focus:ring focus:ring-energy-yellow-400 sm:w-auto"
+                                >
+                                    <span class="mr-2 sm:hidden">Submit</span>
+                                    <span class="mr-2 hidden sm:inline-block">Submit your message</span>
+
+                                    <img
+                                        src="images/heroicons/outline/arrow-narrow-right.svg"
+                                        alt=""
+                                        width="24"
+                                        height="24"
+                                        class="hidden2 h-6 w-auto [filter:brightness(0)_saturate(100%)_invert(50%)_sepia(100%)_saturate(791%)_hue-rotate(12deg)_brightness(91%)_contrast(90%);] group-hover:![filter:brightness(0)_saturate(100%)_invert(30%)_sepia(96%)_saturate(1193%)_hue-rotate(24deg)_brightness(97%)_contrast(89%);] sm:block"
+                                    />
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </article>
-        </div>
-        <div class="btn-link" id="other-work-btn">
-          <span>
-            <i class="fas fa-arrow-right"></i>
-          </span>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
-      <div class="container flex">
-        <h2>Get In Touch</h2>
-        <p class="lead">
-          Have a project in mind or just want to say hi?<br />Feel free to send
-          me a message!
-        </p>
-        <div class="container-links grid">
-          <div class="container-images">
-            <img src="images/bg-3.svg" alt="" class="contact-bg-lg" />
-            <img src="images/bg-4.svg" alt="" class="contact-bg-md" />
-            <img src="images/bg-5.svg" alt="" class="contact-bg-sm" />
-          </div>
-          <ul>
-            <li>
-              <a href="mailto: robert.a.ruse@gmail.com"
-                ><i class="fas fa-envelope"></i
-                ><span>robert.a.ruse@gmail.com</span></a
-              >
-            </li>
-            <li>
-              <a href="tel:+40755490470"
-                ><i class="fas fa-phone-square-alt"></i
-                ><span>+40 755 490 470</span></a
-              >
-            </li>
-            <li>
-              <a href="https://github.com/robertruse" target="_blank"
-                ><i class="fab fa-github-square"></i
-                ><span>github.com/robertruse</span></a
-              >
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/robertruse/" target="_blank"
-                ><i class="fab fa-linkedin"></i
-                ><span>linkedin.com/in/robertruse</span></a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <!-- Footer -->
+        <footer
+            id="footer"
+            x-data="{
+                get footerText() {
+                    currentDate = new Date()
+                    return `Robert Ruse ${currentDate.getFullYear()}`
+                }
+            }"
+            class="border-t border-geyser-100 bg-geyser-50"
+        >
+            <div class="mx-auto max-w-2xl px-10 py-6 xl:max-w-7xl">
+                <div class="flex items-center justify-center">
+                    <img
+                        src="images/fontawesome/copyright-solid.svg"
+                        alt="Social media icon"
+                        target="_blank"
+                        width="448"
+                        height="512"
+                        class="mr-2.5 h-6 w-auto [filter:brightness(0)_saturate(100%)_invert(87%)_sepia(23%)_saturate(127%)_hue-rotate(128deg)_brightness(92%)_contrast(89%);]"
+                    />
 
-    <footer class="footer" id="footer">
-      <div class="container flex">
-        <span>&copy; Robert Ruse 2020</span>
-      </div>
-    </footer>
-  </body>
+                    <span x-text="footerText"></span>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>
